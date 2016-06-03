@@ -1,2 +1,4 @@
 # Hum_Application_Week1_Threshold
-This application was developed during the first week of the MITACS Internship showing how noise was recorded only when it was above a certain threshold. 
+This application provides two functionalities:
+1. Ability to record a sound only when it is above a certain threshold. 
+2. Ability to record a sound at specified intervals. 
