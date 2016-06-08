@@ -27,7 +27,7 @@ public class AudioRecorderActivity extends ActionBarActivity {
     Button button_record, button_stop, button_play, button_playStop;
     File recordingFile;
     boolean isRecording = false, isPlaying = false;
-    int frequency = 11025, channelConfiguration = AudioFormat.CHANNEL_CONFIGURATION_MONO,
+    int frequency = 44100, channelConfiguration = AudioFormat.CHANNEL_CONFIGURATION_MONO, // sampling rate is also called as the sampling frequency
     audioEncoding = AudioFormat.ENCODING_PCM_16BIT;
 
     @Override
