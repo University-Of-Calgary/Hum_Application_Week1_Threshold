@@ -10,7 +10,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -19,6 +22,8 @@ import java.io.IOException;
 public class MainActivity extends ActionBarActivity {
 
     Button analyze_sleep, waited_recording, sample_recording;
+    ListView listView_additional_items;
+    String[] listViewItems = {"Start Async Task", "Record Audio AudioRecorder"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,22 @@ public class MainActivity extends ActionBarActivity {
         analyze_sleep = (Button) findViewById(R.id.main_analyze_sleep);
         waited_recording = (Button) findViewById(R.id.main_wait_recording);
         sample_recording = (Button) findViewById(R.id.main_sample_recording);
+        listView_additional_items = (ListView) findViewById(R.id.list_display_items);
+
+        listView_additional_items.setAdapter(new ArrayAdapter<>(MainActivity.this,
+                android.R.layout.simple_list_item_1, listViewItems));
+        listView_additional_items.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0){
+                    Intent asyncTaskIntent = new Intent(MainActivity.this, StartAsyncTask.class);
+                    startActivity(asyncTaskIntent);
+                } else if (position == 1){
+                    Intent audioRecordIntent = new Intent(MainActivity.this, AudioRecorderActivity.class);
+                    startActivity(audioRecordIntent);
+                }
+            }
+        });
 
         File folder = new File(Environment.getExternalStorageDirectory() + "/Weekend_Recordings");
         boolean success = true;

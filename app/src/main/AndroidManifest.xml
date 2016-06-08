@@ -43,6 +43,10 @@
         </activity>
         <activity android:name=".SampleMediaRecording" >
         </activity>
+        <activity android:name=".StartAsyncTask" >
+        </activity>
+        <activity android:name=".AudioRecorderActivity" >
+        </activity>
     </application>
 
 </manifest>
